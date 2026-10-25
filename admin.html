@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <title>CKAVOX Admin Dashboard</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="admin.js" defer></script>
+</head>
+
+<body class="admin-page">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">C▮▯▮</span>
+      <span>CKAVOX ADMIN</span>
+    </a>
+
+    <div class="header-actions">
+      <div class="clock-box">
+        <span id="adminTime">--:--:--</span>
+        <small id="adminDate">Loading date...</small>
+      </div>
+
+      <a class="back-link" href="index.html">← Website</a>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-top">
+      <div>
+        <p class="eyebrow">CONTENT MANAGEMENT</p>
+        <h1>Admin Dashboard</h1>
+        <p class="status-message">
+          Publish and manage CKAVOX stories.
+        </p>
+      </div>
+    </div>
+
+    <section class="admin-panel" id="adminLoginPanel">
+      <h2>Admin sign in</h2>
+
+      <form class="admin-form" id="adminLoginForm">
+        <label class="wide">
+          Admin email
+          <input
+            id="adminEmail"
+            type="email"
+            autocomplete="username"
+            value="cedrickkayiranga354@gmail.com"
+            required>
+        </label>
+
+        <label class="wide">
+          Password
+          <input
+            id="adminPassword"
+            type="password"
+            autocomplete="current-password"
+            required>
+        </label>
+
+        <div class="wide">
+          <button class="button button-gold" type="submit">
+            Sign in
+          </button>
+
+          <button
+            class="button button-outline"
+            type="button"
+            id="adminResetBtn">
+            Reset password
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <p id="adminStatus" class="status-message" aria-live="polite"></p>
+
+    <section class="admin-panel hidden" id="adminEditorPanel">
+      <div class="admin-top">
+        <h2>Publish new content</h2>
+
+        <button
+          class="button button-outline"
+          id="adminSignOutBtn"
+          type="button">
+          Sign out
+        </button>
+      </div>
+
+      <form class="admin-form" id="publishForm">
+        <label class="wide">
+          Title
+          <input
+            id="postTitle"
+            maxlength="140"
+            placeholder="Enter the post title"
+            required>
+        </label>
+
+        <label>
+          Category
+          <select id="postCategory" required>
+            <option value="films">Films</option>
+            <option value="sports">Sports</option>
+            <option value="technology">Technology</option>
+            <option value="showbiz">Showbiz</option>
+            <option value="news">Trending News</option>
+            <option value="music">Music</option>
+          </select>
+        </label>
+
+        <label>
+          Publication status
+          <select id="postPublished">
+            <option value="true">Publish now</option>
+            <option value="false">Save as unpublished</option>
+          </select>
+        </label>
+
+        <label class="wide">
+          HD image URL
+          <input
+            id="postImage"
+            type="url"
+            placeholder="https://example.com/image.jpg"
+            required>
+        </label>
+
+        <label class="wide">
+          Article or video URL
+          <input
+            id="postUrl"
+            type="url"
+            placeholder="https://example.com/story"
+            required>
+        </label>
+
+        <label class="wide">
+          Description
+          <textarea
+            id="postDescription"
+            maxlength="800"
+            placeholder="Write a short description"
+            required></textarea>
+        </label>
+
+        <div class="wide">
+          <button class="button button-gold" type="submit">
+            Publish content
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section class="admin-panel hidden" id="adminPostsPanel">
+      <h2>Manage published content</h2>
+      <p class="status-message">
+        Only the authorized administrator can remove posts.
+      </p>
+
+      <div id="adminContentList" class="admin-content-list">
+        <p>Posts will appear here after sign in.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
