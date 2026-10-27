@@ -1,411 +1,341 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080808">
-  <meta name="description" content="CKAVOX — trending films, sports, music, technology and news.">
-  <title>CKAVOX | News, Films, Sports & Technology</title>
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="CKAVOX — trending news, music, showbiz, technology and entertainment.">
 
-  <link rel="preconnect" href="https://images.unsplash.com">
+  <title>CKAVOX | Trends That Matter</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
   <script src="supabase-config.js"></script>
   <script src="script.js" defer></script>
 </head>
 
 <body>
+
+  <!-- CLOCK: FIXED AT TOP RIGHT -->
+  <div class="fixed-clock" id="fixedClock">
+    <span class="clock-label">KIGALI</span>
+    <strong id="clockTime">--:--:--</strong>
+    <small id="clockDate">Loading date...</small>
+  </div>
+
+  <!-- TOP BAR -->
+  <div class="top-strip">
+    <span class="live-dot"></span>
+    WHAT'S TRENDING NOW
+    <span class="top-divider">•</span>
+    CKAVOX MEDIA
+  </div>
+
+  <!-- HEADER -->
   <header class="site-header">
+
     <a class="brand" href="#home" aria-label="CKAVOX home">
-      <span class="brand-mark">C▮▯▮</span>
-      <span>CKAVOX</span>
+      <span class="brand-mark" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i>
+      </span>
+
+      <span>
+        CKA<span>VOX</span>
+        <small>MEDIA & CULTURE</small>
+      </span>
     </a>
 
-    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+      ☰
+    </button>
+
+    <nav id="mainNav">
       <a href="#home">Home</a>
-      <a href="#films">Films</a>
-      <a href="#sports">Sports</a>
-      <a href="#technology">Technology</a>
-      <a href="#showbiz">Showbiz</a>
-      <a href="#news">Trending News</a>
-      <a href="#music">Music</a>
+      <a href="#latest">Latest</a>
+      <a href="#categories">Categories</a>
+      <a href="#platforms">Platforms</a>
+      <a href="#about">About</a>
     </nav>
 
     <div class="header-actions">
-      <div class="clock-box">
-        <span id="liveTime">--:--:--</span>
-        <small id="liveDate">Loading date...</small>
-      </div>
-
-      <a class="account-link" href="#account">My Account</a>
-
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        aria-label="Toggle menu"
-        aria-expanded="false">
-        ☰
+      <button class="btn btn-outline" id="openAuth">
+        Admin / Login
       </button>
+
+      <a class="icon-social"
+         href="https://www.instagram.com/"
+         target="_blank"
+         rel="noopener"
+         aria-label="Instagram">◎</a>
     </div>
+
   </header>
 
-  <main id="home">
+  <main>
 
-    <!-- HERO SECTION -->
-    <section class="hero section-wrap">
+    <!-- HERO -->
+    <section class="hero section-wrap" id="home">
+
       <div class="hero-copy">
-        <p class="eyebrow">NEWS • ENTERTAINMENT • TECHNOLOGY</p>
+
+        <div class="eyebrow">
+          <span class="eyebrow-line"></span>
+          CULTURE. PEOPLE. WHAT'S NEXT.
+        </div>
 
         <h1>
-          Discover what's
-          <span>trending.</span>
+          Stay in the <span>know.</span><br>
+          Stay with CKAVOX.
         </h1>
 
         <p>
-          Your destination for films, sports, music, technology,
-          entertainment and the latest news.
+          Your daily destination for trending stories, music, showbiz,
+          technology and the people shaping the conversation.
         </p>
 
-        <div class="hero-actions">
-          <a class="button button-gold" href="#news">Explore News</a>
-          <a class="button button-outline" href="#showbiz">Explore Showbiz</a>
+        <div class="hero-buttons">
+
+          <a class="btn btn-gold" href="#latest">
+            Explore stories <span>↗</span>
+          </a>
+
+          <a class="text-link"
+             href="https://whatsapp.com/channel/0029VbECV9QADTOBu1T2nU3d"
+             target="_blank"
+             rel="noopener">
+            Join our WhatsApp channel ↗
+          </a>
+
         </div>
+
+        <div class="hero-stats">
+
+          <div>
+            <strong>CKAVOX</strong>
+            <span>Independent media spirit</span>
+          </div>
+
+          <div>
+            <strong>Every day</strong>
+            <span>Stories worth your time</span>
+          </div>
+
+        </div>
+
       </div>
 
       <div class="hero-visual">
-        <img
-          src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1400&q=85"
-          alt="Cinema seats"
-          fetchpriority="high">
 
-        <div class="hero-badge">
-          <strong>CKAVOX</strong>
-          <span>Discover • Explore • Enjoy</span>
+        <div class="hero-image-frame">
+          <img
+            src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=85"
+            alt="Crowd enjoying a live entertainment event">
         </div>
+
+        <div class="hero-floating">
+          <span class="floating-icon">✦</span>
+
+          <div>
+            <b>THE CULTURE FEED</b>
+            <small>Fresh stories. Clear perspective.</small>
+          </div>
+        </div>
+
+        <div class="hero-number">
+          01 <span>/ 04</span>
+        </div>
+
       </div>
+
     </section>
 
-    <!-- SOCIAL AND EXTERNAL PLATFORMS -->
-    <section class="section-wrap platforms-section">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">EXPLORE YOUR FAVOURITES</p>
-          <h2>Popular platforms</h2>
-        </div>
+    <!-- TRENDING TICKER -->
+    <section class="ticker" aria-label="Featured categories">
+
+      <div class="ticker-track">
+        <span>✦ TRENDING NEWS</span>
+        <span>✦ MUSIC</span>
+        <span>✦ SHOWBIZ</span>
+        <span>✦ TECHNOLOGY</span>
+        <span>✦ SPORTS</span>
+        <span>✦ TOP 10</span>
+        <span>✦ DID YOU KNOW?</span>
+        <span>✦ TRENDING NEWS</span>
+        <span>✦ MUSIC</span>
+        <span>✦ SHOWBIZ</span>
       </div>
 
-      <div class="platform-grid">
-        <a class="platform netflix"
-           href="https://www.netflix.com/"
-           target="_blank" rel="noopener noreferrer">
-          <b>N</b>
-          <span>Netflix<small>Watch movies</small></span>
-        </a>
-
-        <a class="platform youtube"
-           href="https://www.youtube.com/"
-           target="_blank" rel="noopener noreferrer">
-          <b>▶</b>
-          <span>YouTube<small>Watch videos</small></span>
-        </a>
-
-        <a class="platform instagram"
-           href="https://www.instagram.com/"
-           target="_blank" rel="noopener noreferrer">
-          <b>◎</b>
-          <span>Instagram<small>Explore photos</small></span>
-        </a>
-
-        <a class="platform tiktok"
-           href="https://www.tiktok.com/"
-           target="_blank" rel="noopener noreferrer">
-          <b>♪</b>
-          <span>TikTok<small>Trending videos</small></span>
-        </a>
-
-        <a class="platform facebook"
-           href="https://www.facebook.com/"
-           target="_blank" rel="noopener noreferrer">
-          <b>f</b>
-          <span>Facebook<small>Connect</small></span>
-        </a>
-
-        <a class="platform twitter"
-           href="https://x.com/"
-           target="_blank" rel="noopener noreferrer">
-          <b>𝕏</b>
-          <span>X / Twitter<small>Latest updates</small></span>
-        </a>
-
-        <a class="platform chrome"
-           href="https://www.google.com/chrome/"
-           target="_blank" rel="noopener noreferrer">
-          <b>◉</b>
-          <span>Google Chrome<small>Browse the web</small></span>
-        </a>
-
-        <a class="platform spotify"
-           href="https://open.spotify.com/"
-           target="_blank" rel="noopener noreferrer">
-          <b>♫</b>
-          <span>Spotify<small>Listen to music</small></span>
-        </a>
-
-        <a class="platform livescore"
-           href="https://www.livescore.com/"
-           target="_blank" rel="noopener noreferrer">
-          <b>●</b>
-          <span>LiveScore<small>Live sports scores</small></span>
-        </a>
-      </div>
     </section>
 
-    <!-- FILMS -->
-    <section class="section-wrap category-section" id="films">
+    <!-- FEATURED SLIDESHOW -->
+    <section class="section-wrap feature-section" id="featured">
+
       <div class="section-heading">
+
         <div>
-          <p class="eyebrow">MOVIES & ENTERTAINMENT</p>
-          <h2>Trending films</h2>
-          <p>Discover films and explore where to learn more about them.</p>
+          <div class="eyebrow">HANDPICKED FOR YOU</div>
+          <h2>In the <span>spotlight</span></h2>
         </div>
 
         <div class="slider-controls">
-          <button data-prev="films" aria-label="Previous films">❮</button>
-          <button data-next="films" aria-label="Next films">❯</button>
+          <button id="slidePrev" aria-label="Previous slide">←</button>
+          <button id="slideNext" aria-label="Next slide">→</button>
         </div>
+
       </div>
 
-      <div class="slider-track" id="slider-films"></div>
+      <div class="feature-slider" id="featureSlider">
 
-      <div class="section-foot">
-        <a class="text-link"
-           href="https://www.netflix.com/"
-           target="_blank" rel="noopener noreferrer">
-          Explore Netflix ↗
-        </a>
+        <article class="feature-card active">
 
-        <a class="text-link"
-           href="https://ingwetvfilms.com/movies/masterplan-agasobanuye-by-rocky"
-           target="_blank" rel="noopener noreferrer">
-          Watch Masterplan on Ingwe TV Films ↗
-        </a>
+          <img
+            src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1400&q=85"
+            alt="Music and entertainment">
+
+          <div class="feature-overlay">
+            <span class="tag">MUSIC</span>
+
+            <h3>Sounds, stars and new releases</h3>
+
+            <p>
+              Discover artists, new releases and music stories making waves.
+            </p>
+
+            <a href="#latest" class="feature-link">
+              Explore music stories ↗
+            </a>
+          </div>
+
+        </article>
+
+        <article class="feature-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1400&q=85"
+            alt="News and media">
+
+          <div class="feature-overlay">
+            <span class="tag">NEWS</span>
+
+            <h3>Stories behind the headlines</h3>
+
+            <p>
+              Catch up on important updates and trending conversations.
+            </p>
+
+            <a href="#latest" class="feature-link">
+              Read the latest ↗
+            </a>
+          </div>
+
+        </article>
+
+        <article class="feature-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1400&q=85"
+            alt="Cinema and films">
+
+          <div class="feature-overlay">
+            <span class="tag">FILMS</span>
+
+            <h3>Movies and stories from the big screen</h3>
+
+            <p>
+              Discover films, premieres and entertainment worth watching.
+            </p>
+
+            <a href="#latest" class="feature-link">
+              Explore film stories ↗
+            </a>
+          </div>
+
+        </article>
+
+        <article class="feature-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85"
+            alt="Technology">
+
+          <div class="feature-overlay">
+            <span class="tag">TECHNOLOGY</span>
+
+            <h3>Discover the future of technology</h3>
+
+            <p>
+              Explore digital trends, inventions and useful technology.
+            </p>
+
+            <a href="#categories" class="feature-link">
+              Explore technology ↗
+            </a>
+          </div>
+
+        </article>
+
       </div>
+
+      <div class="slider-dots" id="sliderDots"></div>
+
+      <p class="slider-note">
+        Featured images change automatically every 4 seconds.
+      </p>
+
     </section>
 
-    <!-- SPORTS -->
-    <section class="section-wrap category-section" id="sports">
+    <!-- LATEST CONTENT -->
+    <section class="section-wrap latest-section" id="latest">
+
       <div class="section-heading">
+
         <div>
-          <p class="eyebrow">SPORTS WORLD</p>
-          <h2>Sports & Formula 1</h2>
-          <p>Explore football, basketball, volleyball, racing and more.</p>
+          <div class="eyebrow">THE LATEST</div>
+          <h2>Fresh off the <span>feed</span></h2>
         </div>
 
-        <div class="slider-controls">
-          <button data-prev="sports" aria-label="Previous sports">❮</button>
-          <button data-next="sports" aria-label="Next sports">❯</button>
+        <div class="feed-label">
+          <span class="live-dot"></span>
+          UPDATED BY CKAVOX
         </div>
+
       </div>
 
-      <div class="slider-track" id="slider-sports"></div>
+      <!-- CATEGORY FILTERS -->
+      <div class="filter-row" id="filterRow">
 
-      <div class="section-foot">
-        <a class="text-link"
-           href="https://www.livescore.com/"
-           target="_blank" rel="noopener noreferrer">
-          Open LiveScore ↗
-        </a>
-      </div>
-    </section>
-
-    <!-- TECHNOLOGY -->
-    <section class="section-wrap category-section" id="technology">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">INNOVATION & DIGITAL LIFE</p>
-          <h2>Technology trending</h2>
-          <p>Explore AI, devices, apps and digital innovation.</p>
-        </div>
-
-        <div class="slider-controls">
-          <button data-prev="technology" aria-label="Previous technology">❮</button>
-          <button data-next="technology" aria-label="Next technology">❯</button>
-        </div>
-      </div>
-
-      <div class="slider-track" id="slider-technology"></div>
-    </section>
-
-    <!-- SHOWBIZ -->
-    <section class="section-wrap category-section" id="showbiz">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">MUSIC & ENTERTAINMENT</p>
-          <h2>Showbiz & celebrities</h2>
-          <p>Discover artists, celebrity stories and entertainment.</p>
-        </div>
-
-        <div class="slider-controls">
-          <button data-prev="showbiz" aria-label="Previous showbiz">❮</button>
-          <button data-next="showbiz" aria-label="Next showbiz">❯</button>
-        </div>
-      </div>
-
-      <div class="slider-track" id="slider-showbiz"></div>
-    </section>
-
-    <!-- NEWS -->
-    <section class="section-wrap category-section" id="news">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">STAY INFORMED</p>
-          <h2>Trending news</h2>
-          <p>Browse stories from Rwanda, Africa and around the world.</p>
-        </div>
-
-        <div class="slider-controls">
-          <button data-prev="news" aria-label="Previous news">❮</button>
-          <button data-next="news" aria-label="Next news">❯</button>
-        </div>
-      </div>
-
-      <div class="slider-track" id="slider-news"></div>
-    </section>
-
-    <!-- MUSIC -->
-    <section class="section-wrap category-section" id="music">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">AFRICA & THE WORLD</p>
-          <h2>Trending music</h2>
-          <p>Explore African and international music.</p>
-        </div>
-
-        <div class="slider-controls">
-          <button data-prev="music" aria-label="Previous music">❮</button>
-          <button data-next="music" aria-label="Next music">❯</button>
-        </div>
-      </div>
-
-      <div class="slider-track" id="slider-music"></div>
-
-      <div class="section-foot">
-        <a class="text-link"
-           href="https://open.spotify.com/"
-           target="_blank" rel="noopener noreferrer">
-          Listen on Spotify ↗
-        </a>
-
-        <a class="text-link"
-           href="https://www.youtube.com/"
-           target="_blank" rel="noopener noreferrer">
-          Explore music on YouTube ↗
-        </a>
-      </div>
-    </section>
-
-    <!-- USER ACCOUNT -->
-    <section class="section-wrap account-section" id="account">
-      <div class="account-copy">
-        <p class="eyebrow">YOUR CKAVOX ACCOUNT</p>
-        <h2>Join the community</h2>
-        <p>
-          Sign in or create an account. Admin publishing access is
-          restricted to the authorized admin email.
-        </p>
-      </div>
-
-      <form id="accountForm" class="account-form">
-        <label>
-          Email address
-          <input
-            id="accountEmail"
-            type="email"
-            autocomplete="email"
-            placeholder="Enter your email"
-            required>
-        </label>
-
-        <label>
-          Password
-          <input
-            id="accountPassword"
-            type="password"
-            autocomplete="current-password"
-            minlength="8"
-            placeholder="At least 8 characters"
-            required>
-        </label>
-
-        <div class="form-actions">
-          <button class="button button-gold" type="submit" id="signInBtn">
-            Sign in
-          </button>
-
-          <button class="button button-outline" type="button" id="signUpBtn">
-            Sign up
-          </button>
-        </div>
-
-        <button class="text-button" type="button" id="resetPasswordBtn">
-          Forgot password?
+        <button class="filter-chip selected" data-category="All">
+          All stories
         </button>
 
-        <p id="accountStatus" class="status-message" aria-live="polite"></p>
-      </form>
-    </section>
+        <button class="filter-chip" data-category="Films">Films</button>
+        <button class="filter-chip" data-category="News">News</button>
+        <button class="filter-chip" data-category="Music">Music</button>
+        <button class="filter-chip" data-category="Showbiz">Showbiz</button>
+        <button class="filter-chip" data-category="Technology">Technology</button>
+        <button class="filter-chip" data-category="Sports">Sports</button>
+        <button class="filter-chip" data-category="Trending">Trending</button>
+        <button class="filter-chip" data-category="Other Content">Other Content</button>
+        <button class="filter-chip" data-category="Top 10">Top 10</button>
+        <button class="filter-chip" data-category="Did You Know">Did You Know</button>
 
-    <!-- ADMIN DASHBOARD LINK -->
-    <section class="section-wrap admin-teaser">
-      <div>
-        <p class="eyebrow">AUTHORIZED ACCESS ONLY</p>
-        <h2>Manage CKAVOX content</h2>
-        <p>Only the configured admin account can publish or remove stories.</p>
       </div>
 
-      <a class="button button-gold" href="admin.html">
-        Open admin dashboard ↗
-      </a>
-    </section>
+      <div class="story-grid" id="storyGrid">
 
-    <!-- WHATSAPP CHANNEL -->
-    <section class="section-wrap whatsapp-banner">
-      <div class="whatsapp-icon">✆</div>
+        <div class="empty-state">
+          <span>✦</span>
+          <h3>Your next story starts here</h3>
+          <p>New stories published by CKAVOX will appear in this space.</p>
+        </div>
 
-      <div>
-        <p class="eyebrow">JOIN OUR COMMUNITY</p>
-        <h2>Follow CKAVOX on WhatsApp</h2>
-        <p>Get updates and discover new posts from CKAVOX.</p>
       </div>
 
-      <a
-        class="button whatsapp-button"
-        href="https://whatsapp.com/channel/0029VbECV9QADTOBu1T2nU3d"
-        target="_blank"
-        rel="noopener noreferrer">
-        Join WhatsApp Channel ↗
-      </a>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <a class="brand" href="#home">
-      <span class="brand-mark">C▮▯▮</span>
-      <span>CKAVOX</span>
-    </a>
-
-    <p>News. Entertainment. Technology. Sports.</p>
-    <p>© <span id="currentYear"></span> CKAVOX. All rights reserved.</p>
-
-    <a
-      class="footer-whatsapp"
-      href="https://whatsapp.com/channel/0029VbECV9QADTOBu1T2nU3d"
-      target="_blank"
-      rel="noopener noreferrer">
-      Follow CKAVOX on WhatsApp
-    </a>
-  </footer>
-</body>
-</html>
+      <div class="load-status" id="loadStatus" aria-live="
